@@ -162,16 +162,22 @@ Render can also use `backend/render.yaml` as a starting blueprint.
 ### Frontend on Vercel
 
 1. Import the GitHub repo in Vercel.
-2. Set the root directory to `frontend`.
-3. Build command: `npm run build`
-4. Output directory: `dist`
-5. Add environment variable:
+2. Set the root directory to `auth-fullstack-app`.
+3. Choose the Services preset when Vercel detects `frontend` and `backend`.
+4. Keep the included root `vercel.json`; it maps:
+   - `frontend` to `/`
+   - `backend` to `/_/backend`
+5. Add backend environment variables:
 
 ```env
-VITE_API_URL=https://your-backend-domain.onrender.com/api
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_long_random_secret
+JWT_EXPIRES_IN=7d
+CLIENT_URL=https://your-vercel-domain.vercel.app
 ```
 
-The included `frontend/vercel.json` handles React Router page refreshes.
+For local development, `frontend/.env` should still use `VITE_API_URL=http://localhost:5000/api`.
+On Vercel, the frontend automatically calls `/_/backend/api`.
 
 ### Frontend on Netlify
 
