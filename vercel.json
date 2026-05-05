@@ -1,0 +1,14 @@
+{
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "auth-fullstack-app/frontend",
+      "routePrefix": "/",
+      "framework": "vite"
+    },
+    "backend": {
+      "entrypoint": "auth-fullstack-app/backend",
+      "routePrefix": "/_/backend"
+    }
+  }
+}
+
